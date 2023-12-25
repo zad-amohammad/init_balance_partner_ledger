@@ -9,7 +9,7 @@ class AccountReport(models.Model):
 
     def _init_options_initial_balance(self, options, previous_options=None):
         '''
-        Initialize a filter based on the initial_balance of the line (show).
+        Initialize a filter based on the initial_balance of the line (hide).
         '''
         options['initial_balance'] = [
             {'id': 'hide', 'name': _("hide"), 'selected': False}
@@ -37,7 +37,6 @@ class AccountReport(models.Model):
         if not options.get('initial_balance') or len(options.get('initial_balance')) == 0:
             return []
         for opt in options.get('initial_balance'):
-            print(234, opt)
             if opt['id'] == 'hide' and opt['selected'] == True:
                 self.hide_initial_balance = True
                 print(f"{self.hide_initial_balance} ---------------------")
