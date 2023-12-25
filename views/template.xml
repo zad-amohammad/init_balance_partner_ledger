@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="init_balance_search_template_inherit" name="initial_balance" inherit_id="account_reports.search_template">
+        <xpath expr="//div[@id='extra_options_dropdown']" position="before">
+            <div id="hide_initial_balance" class="btn-group dropdown o_account_reports_filter_account_type" t-if="options.get('initial_balance') != None">
+                <button type="button" class="o-no-caret btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                    <span class="fa fa-user"/>
+                    Initial Balance:
+                    <t t-if="options['initial_balance_display_name']">
+                        <t t-out="options['initial_balance_display_name']"/>
+                    </t>
+                </button>
+                <div class="dropdown-menu o_filter_menu" role="menu">
+                    <t t-foreach="options['initial_balance']" t-as="initial_balance">
+                        <a t-att-title="initial_balance['name']"
+                            t-att-data-id="initial_balance['id']"
+                            data-filter="initial_balance"
+                            class="dropdown-item js_account_report_choice_filter"
+                            role="menuitem"
+                            t-out="initial_balance['name']"/>
+                    </t>
+                </div>
+        
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
